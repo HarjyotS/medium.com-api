@@ -1,4 +1,3 @@
-from re import A
 from pyppeteer import launch
 
 

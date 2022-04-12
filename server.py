@@ -2,15 +2,16 @@ from dataparse.parse import gather_popular, search_topics
 from getdata import getdata
 from urllib.parse import quote_plus
 import json
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
 
 
 @app.route("/")
-async def hello_world():
-    return "Hello, World!"
+def main():
+    # return index.html
+    return render_template("index.html")
 
 
 @app.route("/search/<query>")
@@ -55,4 +56,4 @@ def page_not_found(e):
 
 
 # run app
-app.run(port=8080)
+app.run(port=80)

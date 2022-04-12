@@ -1,0 +1,308 @@
+<html><head><style>@media print {
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+
+html {
+  font-size: 12px;
+}
+
+@media screen and (min-width: 32rem) and (max-width: 48rem) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  line-height: 1.85;
+}
+
+p,
+.splendor-p {
+  font-size: 1rem;
+  margin-bottom: 1.3rem;
+}
+
+h1,
+.splendor-h1,
+h2,
+.splendor-h2,
+h3,
+.splendor-h3,
+h4,
+.splendor-h4 {
+  margin: 1.414rem 0 .5rem;
+  font-weight: inherit;
+  line-height: 1.42;
+}
+
+h1,
+.splendor-h1 {
+  margin-top: 0;
+  font-size: 3.998rem;
+}
+
+h2,
+.splendor-h2 {
+  font-size: 2.827rem;
+}
+
+h3,
+.splendor-h3 {
+  font-size: 1.999rem;
+}
+
+h4,
+.splendor-h4 {
+  font-size: 1.414rem;
+}
+
+h5,
+.splendor-h5 {
+  font-size: 1.121rem;
+}
+
+h6,
+.splendor-h6 {
+  font-size: .88rem;
+}
+
+small,
+.splendor-small {
+  font-size: .707em;
+}
+
+/* https://github.com/mrmrs/fluidity */
+
+img,
+canvas,
+iframe,
+video,
+svg,
+select,
+textarea {
+  max-width: 100%;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Merriweather:300italic,300);
+
+html {
+  font-size: 18px;
+  max-width: 100%;
+}
+
+body {
+  color: #444;
+  font-family: 'Merriweather', Georgia, serif;
+  margin: 0;
+  max-width: 100%;
+}
+
+/* === A bit of a gross hack so we can have bleeding divs/blockquotes. */
+
+p,
+*:not(div):not(img):not(body):not(html):not(li):not(blockquote):not(p) {
+  margin: 1rem auto 1rem;
+  max-width: 36rem;
+  padding: .25rem;
+}
+
+div {
+  width: 100%;
+}
+
+div img {
+  width: 100%;
+}
+
+blockquote p {
+  font-size: 1.5rem;
+  font-style: italic;
+  margin: 1rem auto 1rem;
+  max-width: 48rem;
+}
+
+li {
+  margin-left: 2rem;
+}
+
+/* Counteract the specificity of the gross *:not() chain. */
+
+h1 {
+  padding: 4rem 0 !important;
+}
+
+/*  === End gross hack */
+
+p {
+  color: #555;
+  height: auto;
+  line-height: 1.45;
+}
+
+pre,
+code {
+  font-family: Menlo, Monaco, "Courier New", monospace;
+}
+
+pre {
+  background-color: #fafafa;
+  font-size: .8rem;
+  overflow-x: scroll;
+  padding: 1.125em;
+}
+
+a,
+a:visited {
+  color: #3498db;
+}
+
+a:hover,
+a:focus,
+a:active {
+  color: #2980b9;
+}</style></head><body><h1 id="-medium-com-api-https-mediumapi-harjyotsahni-com-"><a href="https://mediumapi.harjyotsahni.com/">MEDIUM.COM API</a></h1>
+<h1 id="assigment">Assigment</h1>
+<p>Create an API that can crawl medium.com for the purpose of web indexing or gathering data on a particular topic. The API  can show trending articles, authors, and topics from medium.com.</p>
+<p>How I have accomplished this: I have created this api by using a headless browser that takes in a url, the need for a headless browser instead of the requests module is due to the system that medium.com uses to load articles, medium has a template for the search page and the popular page, this page includes javascript that queries a GraphQL database to fill in the template. A headless browser allows the computer to render the template and then it grabs the html. The html is then fed into a html parser called beautiful soup where all the data is extracted by css selectors and other identifying factors. </p>
+<p>Github Link: <a href="https://github.com/HarjyotS/slingshotbackend">https://github.com/HarjyotS/slingshotbackend</a></p>
+<h1 id="api-reference">API Reference</h1>
+<h4 id="query-a-string-for-related">Query a string for related</h4>
+<pre><code class="lang-http">  GET <span class="hljs-meta-keyword">/search/</span><span class="hljs-params">&lt;query&gt;</span>
+</code></pre>
+<p>Query can be any string, <strong>spaces are fine</strong>.</p>
+<h5 id="-search-for-databases-on-medium-https-mediumapi-harjyotsahni-com-search-database-"><a href="https://mediumapi.harjyotsahni.com/search/database">Search for databases on medium</a></h5>
+<p>Example response:</p>
+<pre><code>{
+   <span class="hljs-attr">"content"</span>:[
+      {
+         <span class="hljs-attr">"author"</span>:<span class="hljs-string">"Pavan Srinath"</span>,
+         <span class="hljs-attr">"author_link"</span>:<span class="hljs-string">"https://medium.com/@zeusisdead?source=search_post---------0-------------------------------"</span>,
+         <span class="hljs-attr">"description"</span>:<span class="hljs-string">"The Bangalore Water Supply and Sewerage Board (BWSSB) recently hiked its water tariff, a move that was long overdue. I am quoted in Citizen Matters on why this hike is a good move. The hike in BWSSB\u2019s water tariff is a welcome development that was long overdue. BWSBB has been\u2026"</span>,
+         <span class="hljs-attr">"link"</span>:<span class="hljs-string">"https://medium.com/indian-national-interest/a-long-overdue-hike-in-bangalores-water-prices-d2ca5801769c?source=search_post---------0-------------------------------"</span>,
+         <span class="hljs-attr">"title"</span>:<span class="hljs-string">"A Long Overdue Hike in Bangalore\u2019s Water Prices"</span>
+      },
+      {
+         <span class="hljs-attr">"author"</span>:<span class="hljs-string">"Centre for Civil Society"</span>,
+         <span class="hljs-attr">"author_link"</span>:<span class="hljs-string">"https://medium.com/@ccsindia?source=search_post---------1-------------------------------"</span>,
+         <span class="hljs-attr">"description"</span>:<span class="hljs-string">"In this week\u2019s selection for #ThrowbackThursday, we have a piece by Minoo Masani, first published in Freedom First in 1976. In this piece, he talks about the dangers of inflation \u2014 tracing it fundamentally to the flawed economic policies of the government. \u2026"</span>,
+         <span class="hljs-attr">"link"</span>:<span class="hljs-string">"https://medium.com/spontaneous-order/throwbackthursday-m-r-masani-prices-are-like-water-1976-8860d73dd517?source=search_post---------1-------------------------------"</span>,
+         <span class="hljs-attr">"title"</span>:<span class="hljs-string">"#ThrowbackThursday: M R Masani \u2014 Prices are like Water (1976)"</span>
+      },
+      {
+         <span class="hljs-attr">"author"</span>:<span class="hljs-string">"Hussain Maikah"</span>,
+         <span class="hljs-attr">"author_link"</span>:<span class="hljs-string">"https://medium.com/@hussainmaikah2020?source=search_post---------2-------------------------------"</span>,
+         <span class="hljs-attr">"description"</span>:<span class="hljs-string">"Reverse osmosis system in Pakistan A water purification process in which undesirable substances are removed from water by flowing water molecules under pressure through a semipermeable membrane. \u2026"</span>,
+         <span class="hljs-attr">"link"</span>:<span class="hljs-string">"https://medium.com/@hussainmaikah2020/water-logic-offers-best-ro-plants-in-pakistan-at-reasonable-prices-de8d04949ab1?source=search_post---------2-------------------------------"</span>,
+         <span class="hljs-attr">"title"</span>:<span class="hljs-string">"Water Logic Offers Best RO Plants In Pakistan At Reasonable Prices"</span>
+      }
+   ]
+}
+</code></pre><p>Inside content you will always be given the keys, <code>title, description, link, author, author_link</code>.</p>
+<h4 id="get-popular-articles-">Get popular articles.</h4>
+<pre><code class="lang-http">  <span class="hljs-meta">GET</span> /<span class="hljs-keyword">popular</span>
+</code></pre>
+<h5 id="-get-popular-https-mediumapi-harjyotsahni-com-popular-"><a href="https://mediumapi.harjyotsahni.com/popular">Get Popular</a></h5>
+<p>Example response:</p>
+<pre><code>{
+   <span class="hljs-attr">"content"</span>:[
+      {
+         <span class="hljs-attr">"author"</span>:<span class="hljs-string">"Jolie A. Doggett"</span>,
+         <span class="hljs-attr">"author_link"</span>:<span class="hljs-string">"https://medium.com/@joliedoggett?source=topic_page---------0------------------1-------------"</span>,
+         <span class="hljs-attr">"description"</span>:<span class="hljs-string">"Struggling with writer\u2019s block? We may have the solution\u2026"</span>,
+         <span class="hljs-attr">"link"</span>:<span class="hljs-string">"https://medium.com/creators-hub/how-have-you-changed-write-here-7-4d7227b5e377?source=topic_page---------0------------------1-------------"</span>,
+         <span class="hljs-attr">"title"</span>:<span class="hljs-string">"How Have You Changed? | Write Here 7"</span>
+      },
+      {
+         <span class="hljs-attr">"author"</span>:<span class="hljs-string">"Danielle Moodie"</span>,
+         <span class="hljs-attr">"author_link"</span>:<span class="hljs-string">"https://medium.com/@daniellemoodie?source=topic_page---------1------------------1-------------"</span>,
+         <span class="hljs-attr">"description"</span>:<span class="hljs-string">"Testimony from the Jan. 6 Capitol riot shows us exactly who we are"</span>,
+         <span class="hljs-attr">"link"</span>:<span class="hljs-string">"https://zora.medium.com/actually-this-is-america-143efa23994d?source=topic_page---------1------------------1-------------"</span>,
+         <span class="hljs-attr">"title"</span>:<span class="hljs-string">"Actually, This IS America"</span>
+      },
+      {
+         <span class="hljs-attr">"author"</span>:<span class="hljs-string">"Garfield Hylton"</span>,
+         <span class="hljs-attr">"author_link"</span>:<span class="hljs-string">"https://garfield-hylton.medium.com/?source=topic_page---------2------------------1-------------"</span>,
+         <span class="hljs-attr">"description"</span>:<span class="hljs-string">"A Florida officer getting 12 years in prison for planting drugs on suspects triggered me and probably you too."</span>,
+         <span class="hljs-attr">"link"</span>:<span class="hljs-string">"https://momentum.medium.com/cops-framing-suspects-my-take-on-why-every-traffic-stop-is-terrifying-443d03c58a5d?source=topic_page---------2------------------1-------------"</span>,
+         <span class="hljs-attr">"title"</span>:<span class="hljs-string">"Cops Framing Suspects: My Take on Why Every Traffic Stop Is Terrifying"</span>
+      }
+   ]
+}
+</code></pre><p>Inside content you will always be given the keys, <code>title, description, link, author, author_link</code>.</p>
+<h2 id="installation-and-setup">Installation and Setup</h2>
+<h3 id="-windows-only-"><strong>WINDOWS ONLY</strong></h3>
+<h3 id="installation">Installation</h3>
+<p>Install with git</p>
+<pre><code class="lang-bash">  git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/HarjyotS/slingshotbackend.git
+</code></pre>
+<p>Or download zip from github.</p>
+<h3 id="setup">Setup</h3>
+<p>Open command line and install requirements.
+<code>pip install -r requirements.</code></p>
+<h2 id="deployment">Deployment</h2>
+<p><code>python server.py</code></p>
+<p>Your api will now run locally on port 80!
+You can access it by going to <code>https://localhost:80</code> or <code>https://localhost</code></p>
+</body></html>
