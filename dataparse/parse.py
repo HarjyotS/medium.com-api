@@ -8,7 +8,7 @@ async def gather_popular(data):
     # go through all elements and extract the h3, the description and the link
     main = []
     for index, e in enumerate(elem):
-        if index == 0 or index == 1:
+        if index == 100:
             continue
         else:
             try:
@@ -61,11 +61,11 @@ async def search_topics(data):
 
         main.append(
             {
-                "title": h2.text,
-                "description": desc,
                 "link": "https://medium.com" + str(link),
                 "author": author,
                 "author_link": "https://medium.com" + str(authorl),
+                "description": desc,
+                "title": h2.text,
             }
         )
     return main
