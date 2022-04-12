@@ -12,9 +12,9 @@ async def getdata(url):
     await page.setViewport({"width": 1920, "height": 1280})
     c = await page.content()
     # screenshot page
-    await page.screenshot({"path": "screenshot.png"})
-    with open("medium.html", "w", encoding="utf-8") as f:
-        f.write(c)
+    # await page.screenshot({"path": "screenshot.png"})
+    # with open("medium.html", "w", encoding="utf-8") as f:
+    #     f.write(c)
     await browser.close()
     return c
 
