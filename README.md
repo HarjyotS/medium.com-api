@@ -9,6 +9,8 @@ How I have accomplished this: I have created this api by using a headless browse
 Video showcase: https://www.youtube.com/watch?v=5rLN-SioRSY
 
 Github Link: https://github.com/HarjyotS/slingshotbackend
+
+Api Link: https://mediumapi.harjyotsahni.com/
 # API Reference
 
 #### Query a string for related 
