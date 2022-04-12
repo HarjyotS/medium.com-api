@@ -5,7 +5,7 @@
 Create an API that can crawl medium.com for the purpose of web indexing or gathering data on a particular topic. The API  can show trending articles, authors, and topics from medium.com.
 
 How I have accomplished this: I have created this api by using a headless browser that takes in a url, the need for a headless browser instead of the requests module is due to the system that medium.com uses to load articles, medium has a template for the search page and the popular page, this page includes javascript that queries a GraphQL database to fill in the template. A headless browser allows the computer to render the template and then it grabs the html. The html is then fed into a html parser called beautiful soup where all the data is extracted by css selectors and other identifying factors. 
-
+Video showcase: https://www.youtube.com/watch?v=5rLN-SioRSY
 Github Link: https://github.com/HarjyotS/slingshotbackend
 # API Reference
 
